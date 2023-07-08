@@ -1,4 +1,4 @@
-package sharppvp.plugins.sharpenchantments.events;
+package com.nextdevv.sharpenchantments.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -34,7 +34,7 @@ public class ArmorListener implements Listener{
     public final void inventoryClick(final InventoryClickEvent e){
         boolean shift = false, numberkey = false;
         if(e.isCancelled()) return;
-        if(e.getAction() == InventoryAction.NOTHING) return;// Why does this get called if nothing happens??
+        if(e.getAction() == InventoryAction.NOTHING) return; // Why does this get called if nothing happens??
         if(e.getClick().equals(ClickType.SHIFT_LEFT) || e.getClick().equals(ClickType.SHIFT_RIGHT)){
             shift = true;
         }
@@ -47,7 +47,6 @@ public class ArmorListener implements Listener{
         if(!(e.getWhoClicked() instanceof Player)) return;
         ArmorType newArmorType = ArmorType.matchType(shift ? e.getCurrentItem() : e.getCursor());
         if(!shift && newArmorType != null && e.getRawSlot() != newArmorType.getSlot()){
-            // Used for drag and drop checking to make sure you aren't trying to place a helmet in the boots slot.
             return;
         }
         if(shift){
@@ -112,7 +111,7 @@ public class ArmorListener implements Listener{
             Player player = e.getPlayer();
             if(!e.useInteractedBlock().equals(Result.DENY)){
                 if(e.getClickedBlock() != null && e.getAction() == Action.RIGHT_CLICK_BLOCK && !player.isSneaking()){// Having both of these checks is useless, might as well do it though.
-                    // Some blocks have actions when you right click them which stops the client from equipping the armor in hand.
+                    // Some blocks have actions when you right-click them which stops the client from equipping the armor in hand.
                     Material mat = e.getClickedBlock().getType();
                     for(String s : blockedMaterials){
                         if(mat.name().equalsIgnoreCase(s)) return;

@@ -1,4 +1,4 @@
-package sharppvp.plugins.sharpenchantments.events;
+package com.nextdevv.sharpenchantments.events;
 
 import org.bukkit.inventory.ItemStack;
 
