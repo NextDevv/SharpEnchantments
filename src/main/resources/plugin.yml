@@ -1,0 +1,4 @@
+name: SharpEnchantments
+version: '${version}'
+main: com.nextdevv.sharpenchantments.SharpEnchantments
+load: STARTUP
